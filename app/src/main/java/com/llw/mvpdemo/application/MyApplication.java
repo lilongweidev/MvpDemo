@@ -1,7 +1,5 @@
 package com.llw.mvpdemo.application;
 
-import android.app.Application;
-
 import com.llw.mvplibrary.BaseApplication;
 import com.llw.mvplibrary.network.NetworkApi;
 

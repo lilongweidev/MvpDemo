@@ -9,8 +9,6 @@ import com.llw.mvplibrary.base.BaseView;
 import com.llw.mvplibrary.network.NetworkApi;
 import com.llw.mvplibrary.network.observer.BaseObserver;
 
-import io.reactivex.Observable;
-
 /**
  * 将V与M订阅起来
  * @author llw
