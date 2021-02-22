@@ -69,5 +69,10 @@ public abstract class BaseFragment extends Fragment implements IUiCallback {
         context = null;
     }
 
+    @Override
+    public void initBeforeView(Bundle savedInstanceState) {
+
+    }
+
 
 }
