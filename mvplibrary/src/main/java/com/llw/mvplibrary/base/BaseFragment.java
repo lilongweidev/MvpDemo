@@ -45,7 +45,7 @@ public abstract class BaseFragment extends Fragment implements IUiCallback {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        initBeforeView(savedInstanceState);
+        initData(savedInstanceState);
     }
 
     /**
