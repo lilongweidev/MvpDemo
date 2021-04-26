@@ -13,7 +13,6 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".TestActivity">
-
         </activity>
         <activity android:name=".NetworkFragment" />
         <activity android:name=".NormalFragment" />
