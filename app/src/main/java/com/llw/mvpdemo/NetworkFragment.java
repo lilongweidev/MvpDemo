@@ -3,7 +3,9 @@ package com.llw.mvpdemo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
+import com.google.gson.Gson;
 import com.llw.mvpdemo.bean.GankResponse;
 import com.llw.mvpdemo.contract.MainContract;
 import com.llw.mvplibrary.mvp.MvpFragment;
@@ -20,7 +22,7 @@ public class NetworkFragment extends MvpFragment<MainContract.MainPresenter> imp
      */
     @Override
     public void initData(Bundle savedInstanceState) {
-
+        mPresenter.getGankList();
     }
 
     /**
@@ -43,7 +45,9 @@ public class NetworkFragment extends MvpFragment<MainContract.MainPresenter> imp
      */
     @Override
     public void getListResult(GankResponse gankResponse) {
-
+        if (gankResponse.getData() != null && gankResponse.getData().size() > 0) {
+            Log.d("Fragment",new Gson().toJson(gankResponse.getData()));
+        }
     }
 
     /**
