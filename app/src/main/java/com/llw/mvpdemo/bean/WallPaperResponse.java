@@ -11,6 +11,7 @@ public class WallPaperResponse {
     private ResBean res;
     private int code;
 
+
     public String getMsg() {
         return msg;
     }
