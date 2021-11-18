@@ -44,6 +44,10 @@ public abstract class BaseActivity extends AppCompatActivity implements IUiCallb
         initData(savedInstanceState);
     }
 
+    @Override
+    public void initBeforeView(Bundle savedInstanceState) {
+
+    }
 
     /**
      * Toast消息提示  字符
