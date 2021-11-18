@@ -7,7 +7,6 @@ import java.util.List;
  * @author llw
  */
 public class WallPaperResponse {
-
     private String msg;
     private ResBean res;
     private int code;
