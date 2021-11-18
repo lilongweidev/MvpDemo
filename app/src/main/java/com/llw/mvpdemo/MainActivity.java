@@ -1,10 +1,12 @@
 package com.llw.mvpdemo;
 
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
+
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.llw.mvpdemo.adapter.GankListAdapter;
-import com.llw.mvpdemo.bean.GankResponse;
+
+import com.llw.mvpdemo.adapter.WallPaperAdapter;
+import com.llw.mvpdemo.bean.WallPaperResponse;
 import com.llw.mvpdemo.contract.MainContract;
 import com.llw.mvplibrary.mvp.MvpActivity;
 import com.llw.mvplibrary.network.utils.KLog;
@@ -18,12 +20,9 @@ import java.util.List;
 public class MainActivity extends MvpActivity<MainContract.MainPresenter> implements MainContract.IMainView {
 
 
-    private RecyclerView rv;
-
     private static final String TAG = "MainActivity";
-
-    private List<GankResponse.DataBean> mList = new ArrayList<>();
-    private GankListAdapter mAdapter;
+    private final List<WallPaperResponse.ResBean.VerticalBean> mList = new ArrayList<>();
+    private WallPaperAdapter mAdapter;
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -37,14 +36,14 @@ public class MainActivity extends MvpActivity<MainContract.MainPresenter> implem
      * 初始化列表
      */
     private void initList() {
-        rv = findViewById(R.id.rv);
+        RecyclerView rv = findViewById(R.id.rv);
         //配置rv
-        mAdapter = new GankListAdapter(R.layout.item_list, mList);
-        rv.setLayoutManager(new LinearLayoutManager(context));
+        mAdapter = new WallPaperAdapter(mList);
+        rv.setLayoutManager(new GridLayoutManager(context,2));
         rv.setAdapter(mAdapter);
 
         //请求列表数据
-        mPresenter.getGankList();
+        mPresenter.getWallPaper();
     }
 
 
@@ -59,21 +58,21 @@ public class MainActivity extends MvpActivity<MainContract.MainPresenter> implem
     }
 
     /**
-     * 获取列表数据返回
+     * 获取壁纸返回
      *
-     * @param gankResponse
+     * @param wallPaperResponse
      */
     @Override
-    public void getListResult(GankResponse gankResponse) {
-        if (gankResponse.getData() != null && gankResponse.getData().size() > 0) {
+    public void getWallPaper(WallPaperResponse wallPaperResponse) {
+        List<WallPaperResponse.ResBean.VerticalBean> vertical = wallPaperResponse.getRes().getVertical();
+        if (vertical != null && vertical.size() > 0) {
             mList.clear();
-            mList.addAll(gankResponse.getData());
+            mList.addAll(vertical);
             mAdapter.notifyDataSetChanged();
-            hideLoadingDialog();
         } else {
             showMsg("数据为空");
-            hideLoadingDialog();
         }
+        hideLoadingDialog();
     }
 
     /**
@@ -82,11 +81,9 @@ public class MainActivity extends MvpActivity<MainContract.MainPresenter> implem
      * @param e
      */
     @Override
-    public void getListFailed(Throwable e) {
-        KLog.e(TAG, e.toString());
+    public void getWallPaperFailed(Throwable e) {
+        KLog.e(TAG,e.toString());
         showMsg("获取列表数据异常，具体日志信息请查看日志");
         hideLoadingDialog();
     }
-
-
 }

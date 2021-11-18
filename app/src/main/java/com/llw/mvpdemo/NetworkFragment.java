@@ -1,10 +1,8 @@
 package com.llw.mvpdemo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-import com.llw.mvpdemo.bean.GankResponse;
+import com.llw.mvpdemo.bean.WallPaperResponse;
 import com.llw.mvpdemo.contract.MainContract;
 import com.llw.mvplibrary.mvp.MvpFragment;
 
@@ -37,21 +35,14 @@ public class NetworkFragment extends MvpFragment<MainContract.MainPresenter> imp
         return new MainContract.MainPresenter();
     }
 
-    /**
-     * 数据正常返回
-     * @param gankResponse
-     */
+
     @Override
-    public void getListResult(GankResponse gankResponse) {
+    public void getWallPaper(WallPaperResponse wallPaperResponse) {
 
     }
 
-    /**
-     * 数据异常返回
-     * @param e
-     */
     @Override
-    public void getListFailed(Throwable e) {
+    public void getWallPaperFailed(Throwable e) {
 
     }
 }
