@@ -21,6 +21,7 @@ public class NetworkFragment extends MvpFragment<MainContract.MainPresenter> imp
 
     }
 
+
     /**
      * 绑定布局
      * @return
